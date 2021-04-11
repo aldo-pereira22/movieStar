@@ -1,5 +1,6 @@
 <?php 
-
+    require_once("globals.php");
+    require_once("db.php");
     
 ?>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
     <title>Movie Stars</title>
 
     <!-- ICON -->
-    <link rel="short icon" href="img/moviestar.ico">
+    <link rel="short icon" href="<?=$BASE_URL ?>img/moviestar.ico">
 
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.css"
@@ -24,16 +25,64 @@
     crossorigin="anonymous" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?=$BASE_URL?>css/style.css">
    
 
 
 
 </head>
 <body>
-<h1> Bem Vindo ao nosso Site</h1>
-    <i class="far fa-plus-square"> </i>
+    
+    <header> 
+        <nav id="main-navbar" class="navbar navbar-expand-lg">
+            <a href="<?=$BASE_URL ?>" class="navbar-brand">
+                <img src="<?= $BASE_URL ?>img/logo.svg" alt="MovieStar" id="logo">
+                <span id="moviestar-title"> MovieStar</span>
+            </a>
 
+            <button class="navbar-toggler" type="button" data-toogle="collapse" data-target="#navbar"
+            aria-controls="navbar"aria-expanded="false" aria-lable="Togglenavigation"> <i class="fas fa-bars"> </i> </button>
+
+            <form action="" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
+                <input type="text" name="q" id="search" class="form-control mr-sm-2" type="search"
+                    placeholder="Buscar Filmes" arial-label="Search" >
+
+                <button class="btn my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search" ></i>
+                </button>
+            </form>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item" > <a href="<?= $BASE_URL ?>" class="nav-link"> Entrar/Cadastrar </a> </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main-container" class="container-fluid"> 
+        <h1> Corpo do Site</h1>
+     </div>
+
+     <footer id="footer">
+        <div class="social-container">
+            <ul>
+                <li> <a href="#"> <i class="fab fa-facebook-square">  </i> </a> </li>
+                <li> <a href="#"> <i class="fab fa-instagram">  </i> </a> </li>
+                <li> <a href="#"> <i class="fab fa-youtube">  </i> </a> </li>
+
+            </ul>
+        </div>
+
+        <div id="footer-links-container">
+            <ul> <li> <a href="#"> Adicionar filme</a> </li> </ul>
+            <ul> <li> <a href="#"> Adicionar crítica</a> </li> </ul>
+            <ul> <li> <a href="#"> Entrar / Registrar </a> </li> </ul>
+
+        </div>
+
+        <p> &copy; 2021 Aldo Pereira </p>
+     </footer>
 
     <!-- BootStrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
