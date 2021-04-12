@@ -6,12 +6,11 @@
     require_once("dao/UserDAO.php");
 
     $message = new Message($BASE_URL);
-
+    $userDao = new UserDAO($conn, $BASE_URL);
 
     //Resgata  o tipo de formulário
     $type = filter_input(INPUT_POST, "type");
-    
-    echo $type;
+
 
     // Verificação do Tipo de formulário
     if($type === "register"){
@@ -24,6 +23,42 @@
 
         // Verificação dos dados necessários
         if($name && $lastname && $email && $password){
+            
+            // Verificaar se as senhas batem
+            if($password === $confirmapassword){
+                // Verificar se o E-mail ja está cadastrado
+                if($userDao->findByEmail($email) === false ){
+                    
+                    
+                    $user = new User();
+
+                    // Criação do token e senha
+                    $userToken = $user->generateToken();
+                    $finalPassword = $user->generatePassword($password);
+
+                    //Montando o USUÁRIO PARA CADASTRAR NO BANCO DE DADOS
+
+                    $user->name = $name;
+                    $user->lastname = $lastname;
+                    $user->password = $finalPassword;
+                    $user->token = $userToken;
+                    $user->email = $email;
+
+
+                    $auth = true;
+
+                    $userDao->create($user, $auth);
+
+
+                }else {
+                    $message->setMessage("Email ja cadastrado.", "Error", "back");                    
+
+                }
+
+            }else {
+                $message->setMessage("As senhas não são iguais.", "Error", "back");
+            }
+
 
         }else {
             //Enviar mensagem de erro, de dados que estejam faltando
