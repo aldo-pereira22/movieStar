@@ -10,13 +10,26 @@
         public function __construct(PDO $con, $url){
 
             $this->conn = $conn;
-            $this.url = $url;
+            $this->url = $url;
 
         }
 
         public function buildUser($data){
+            $user = new User();
 
+            $user->id = $data["id"];
+            $user->name = $data["name"];
+            $user->lastname = $data["lastname"];
+            $user->email = $data["email"];
+            $user->password = $data["password"];
+            $user->image = $data["image"];
+            $user->bio = $data["bio"];
+            $user->token = $data["token"];
+
+            return $user;
         }
+
+
         public function create(User $user, $authUser=false){
 
         }
