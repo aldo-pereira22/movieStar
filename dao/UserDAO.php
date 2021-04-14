@@ -43,7 +43,7 @@
             $stmt->execute();
 
             //AUTENTICAR, caso o auth seja true
-            if($auth){
+            if($authUser){
                 $this->setTokenToSession($user->token);
             }
 
@@ -65,6 +65,7 @@
             if($redirect){
                 //Redireciona para o Perfil do usuário
                 $this->message->setMessage("Seja Bem Vindo!", "success", "editprofile.php");
+
 
             }
 
