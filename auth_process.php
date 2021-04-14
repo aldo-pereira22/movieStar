@@ -63,28 +63,26 @@
         //Tenta autenticar usuário 
         if($userDao->authenticateUser($email, $password) ){
 
-            //Gerar um token e inserir na sessão
-            $token = $user->generateToken();
-            $this->setTokenToSession($token);
+            $this->message->setMessage("Seja Bem Vindo!", "success", "editprofile.php");
 
-            //Atualizar token no usuário
-            $user->token = $token;
-
-            $this->update($user);
-
-            return true;
 
         //Redireciona o usuário, caso não consiga autenticar
         }else { 
 
-            $message->setMessage("Usuário e/ou senha incorretos", "error", "back");
-
-
+            $message->setMessage("Seja bem-vindo!", "success", "editprofile.php");
         }
 
     }else {
         $message->setMessage("Informações inválidas", "error", "index.php");
 
     }
+
+
+
+
+
+    
+
+
 
 ?>
