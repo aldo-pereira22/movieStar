@@ -78,7 +78,7 @@
       
             }
       
-          }
+        }
 
         public function verifyToken($protected =false){
 
@@ -121,11 +121,10 @@
 
         }
 
-        public function authenticateUser($email, $password){
-
+        public function authenticateUser($email, $password) {
 
             $user = $this->findByEmail($email);
-
+      
             if($user) {
       
               // Checar se as senhas batem
@@ -152,8 +151,8 @@
               return false;
       
             }
-
-        }
+      
+          }
 
 
         public function findByEmail($email) {
