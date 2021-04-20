@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="length">Título:</label>
+                    <label for="length">Duração:</label>
                     <input type="text" class="form-control" id="length" name="length" placeholder="Digite a duração do filme">
 
                 </div>
