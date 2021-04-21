@@ -1,4 +1,4 @@
-<?php
+    <?php
     require_once("models/User.php");
     require_once("models/Message.php");
 
