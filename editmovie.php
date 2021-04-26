@@ -94,7 +94,7 @@
 
                             </div>
 
-                            <input type="submit" class="btn card-btn" value="Adicionar Filme">
+                            <input type="submit" class="btn card-btn" value="Atualizar Filme">
                                     
 
                         </form>
