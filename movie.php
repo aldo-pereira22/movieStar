@@ -35,7 +35,8 @@
 
     if($movie->image == "") {
         $movie->image = "movie_cover.jpg";
-      }
+    }
+
     //Checar se o filme é do usuário
     $userOwnsMovie = false;
 
