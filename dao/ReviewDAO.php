@@ -58,7 +58,27 @@ require_once("dao/UserDAO.php");
 
         }
 
+
+        
+
         public function getMoviesReviews($id){
+            $reviews = [];
+            $stmt = $this->conn->prepare("SELECT  *FROM  reviews WHERE movies_id = :movies_id");
+            $stmt->bindParam(":movies_id", $id);
+
+            $stmt->execute();
+            if($stmt->rowCount() > 0){
+
+                $reviewsData = $stmt->fetchAll();
+
+                foreach($reviewsData as $review){
+                    $reviews = $this->buildReview($review);
+                }
+
+                
+                return $reviews;
+            }
+
 
         }
 
