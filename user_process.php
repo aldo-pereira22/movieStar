@@ -40,13 +40,12 @@
       $image = $_FILES["image"];
       $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
       $jpgArray = ["image/jpeg", "image/jpg"];
-      
+
       // Checagem de tipo de imagem
       if(in_array($image["type"], $imageTypes)) {
-        
+
         // Checar se jpg
         if(in_array($image, $jpgArray)) {
-          print_r($_FILES);exit;    
 
           $imageFile = imagecreatefromjpeg($image["tmp_name"]);
 
@@ -76,35 +75,30 @@
   // Atualizar senha do usuário
   } else if($type === "changepassword") {
 
-      // Receber dados do post
-      $password = filter_input(INPUT_POST, "password");
-      $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
-  
-      // Resgata dados do usuário
-      $userData = $userDao->verifyToken();
-      
-      $id = $userData->id;
-  
-      if($password == $confirmpassword) {
-  
-        // Criar um novo objeto de usuário
-        $user = new User();
-  
-        $finalPassword = $user->generatePassword($password);
-  
-        $user->password = $finalPassword;
-        $user->id = $id;
-  
-        $userDao->changePassword($user);
+    // Receber dados do post
+    $password = filter_input(INPUT_POST, "password");
+    $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
 
-        
-      }else {
-
-        $message->setMessage("As senhas não são iguais!", "error", "back");
-
-      }
+    // Resgata dados do usuário
+    $userData = $userDao->verifyToken();
     
+    $id = $userData->id;
 
+    if($password == $confirmpassword) {
+
+      // Criar um novo objeto de usuário
+      $user = new User();
+
+      $finalPassword = $user->generatePassword($password);
+
+      $user->password = $finalPassword;
+      $user->id = $id;
+
+      $userDao->changePassword($user);
+
+    } else {
+      $message->setMessage("As senhas não são iguais!", "error", "back");
+    }
 
   } else {
 
