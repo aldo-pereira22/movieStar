@@ -42,7 +42,7 @@
                     <tr> 
                         <td scope="row" > <?= $movie->id?> </td>
                         <td><a href="<?= $BASE_URL?>movie.php?id=<?=$movie->id?>" class="table-movie-title"> <?= $movie->title ?> </a></td>
-                        <td> 9 <i class="fas fa-star"> </i> </td>
+                        <td> <?= $movie->rating ?> <i class="fas fa-star"> </i>  </td>
                         <td class="actions-column">
                             <a href="<?= $BASE_URL?>editmovie.php?id=<?=$movie->id?>" class="edit-btn"> <i class="far fa-edit"></i> Editar</a>
 

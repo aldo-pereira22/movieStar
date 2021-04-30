@@ -63,6 +63,7 @@
 
       if($stmt->rowCount() > 0) {
 
+        
         $reviewsData = $stmt->fetchAll();
 
         $userDao = new UserDao($this->conn, $this->url);
